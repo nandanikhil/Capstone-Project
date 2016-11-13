@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Reached</string>
+    <!--<string name="FACEBOOK_APP_ID">2169446043281366</string>-->
+    <!--<string name="ACCOUNT_KIT_CLIENT_TOKEN">d8661be586a3114ae6a92fa5eebb8499</string>-->
+  <!--<string name="google_places_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAgxuzJlzqb4phjN6G8Yhg6hmE-4Iqg6-k</string>-->
+
+
+  <string name="permissions_read_phone_state_message">
+        Grant permission to read your phone number from your device to pre-fill.
+    </string>
+    <string name="permissions_read_phone_state_title">Read Phone Number</string>
+    <string name="permissions_receive_sms_message">
+        Grant permission to read your SMS code from your device to pre-fill.
+    </string>
+    <string name="permissions_receive_sms_title">Read SMS Code</string>
+    <string name="phone_number_label">Phone Number</string>
+    <string name="read_phone_state_label">Read phone number?</string>
+    <string name="receive_sms_label">Receive SMS?</string>
+
+
+    <string name="send_button">Send Notification</string>
+    <string name="notification_message_hint">Enter notification message text</string>
+
+
+    <!-- Buttons strings -->
+    <string name="add_geofences">Add geofence</string>
+    <string name="remove_geofences">Remove geofences</string>
+
+    <!-- Transition type strings -->
+    <string name="geofence_transition_entered">Entered</string>
+    <string name="geofence_transition_exited">Exited</string>
+    <string name="unknown_geofence_transition">Unknown Transition</string>
+
+    <!-- Error strings -->
+    <string name="not_connected">GoogleApiClient no yet connected. Try again.</string>
+    <string name="geofence_not_available">Geofence service is not available now</string>
+    <string name="geofence_too_many_geofences">Your app has registered too many geofences</string>
+    <string name="geofence_too_many_pending_intents">
+        You have provided too many PendingIntents to the addGeofences() call
+    </string>
+    <string name="unknown_geofence_error">
+        Unknown error: the Geofence service is not available now
+    </string>
+    <string name="geofence_transition_invalid_type">
+        Geofence transition error: invalid transition type %1$d
+    </string>
+    <string name="geofence_transition_notification_text">Click notification to return to app</string>
+
+
+
+
+
+    <string name="enter_location_hint">Enter the name of place you want to visit</string>
+    <string name="location_content_decription">Select the place you want to go to</string>
+    <string name="first_letter_content_decription">First Letter of Name</string>
+    <string name="name_content_decription">Username</string>
+    <string name="email_content_decription">Email address</string>
+    <string name="phoneno_content_decription">User verified mobile no</string>
+    <string name="app_logo_content_decription">User Reaching target</string>
+    <string name="permission_not_granted">Cannot add geofence because permission not granted</string>
+    <string name="locationLabel">Where are you going?</string>
+    <string name="userLabel">Whom do you want to inform when you reach?</string>
+    <string name="geofence_added">Geofence Added</string>
+    <string name="has_reached"> has reached </string>
+    <string name="on_way"> is on its way to </string>
+</resources>
+
+

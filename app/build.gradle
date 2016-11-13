@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenLocal()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'reached'
+            keyPassword '1007nanda'
+            storeFile file('/Users/nikhil/Documents/Reached/reached.jks')
+            storePassword '1007nanda'
+        }
+    }
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+
+
+        defaultConfig {
+            resConfigs "en"
+        }
+        applicationId "com.nikhil.reached"
+        minSdkVersion 17
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+
+
+        resValue "string", "FACEBOOK_APP_ID", '\"PLACE_HERE_YOUR_FACEBOOK_APP_ID\"'
+        resValue "string", "ACCOUNT_KIT_CLIENT_TOKEN", '\"PLACE_HERE_YOUR_TACCOUNT_KIT_CLIENT_TOKEN\"'
+        resValue "string", "google_places_key", '\"PLACE_HERE_YOUR_TACCOUNT_KIT_CLIENT_TOKEN\"'
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile 'com.google.android.gms:play-services-auth:9.8.0'
+    compile 'com.google.android.gms:play-services-location:9.8.0'
+    compile 'com.google.firebase:firebase-auth:9.8.0'
+    compile 'com.google.firebase:firebase-database:9.8.0'
+    compile 'com.google.firebase:firebase-messaging:9.8.0'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.facebook.android:account-kit-sdk:4.+'
+}
+apply plugin: 'com.google.gms.google-services'
