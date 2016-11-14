@@ -26,7 +26,6 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -45,10 +44,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Handle data payload of FCM messages.
-        Log.d(TAG, "FCM Message Id: " + remoteMessage.getMessageId());
-        Log.d(TAG, "FCM Notification Message: " +
-                remoteMessage.getNotification());
-        Log.d(TAG, "FCM Data Message: " + remoteMessage.getData());
+
 
         String message = remoteMessage.getData().get("message");
         name = message.split("##")[0];
@@ -89,7 +85,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         notificationBuilder = new NotificationCompat.Builder(this)
                 .setContentTitle(getResources().getString(R.string.app_name))
-                .setContentText(name + " has reached " + location)
+                .setContentText(name + getString(R.string.has_reached) + location)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(bm)
                 .setColor(getResources().getColor(R.color.colorPrimary))
@@ -111,7 +107,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_reached);
         ComponentName thisWidget = new ComponentName(context, ReachedWidgetProvider.class);
-        remoteViews.setTextViewText(R.id.status, name + " is on its way to " + location);
+        remoteViews.setTextViewText(R.id.status, name + getString(R.string.on_way) + location);
         appWidgetManager.updateAppWidget(thisWidget, remoteViews);
     }
 

@@ -63,6 +63,11 @@
     <string name="geofence_added">Geofence Added</string>
     <string name="has_reached"> has reached </string>
     <string name="on_way"> is on its way to </string>
+    <string name="no_one_is_travelling">No one is traveling in your connections</string>
+    <string name="seperator">##</string>
+    <string name="failed_to_load_users">Failed to load users</string>
+    <string name="play_service_error">Google Play Services error</string>
+    <string name="auth_failed">"Authentication failed."</string>
 </resources>
 
 

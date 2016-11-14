@@ -3,8 +3,6 @@ package com.nikhil.reached.locationautocomplete;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.util.Log;
-
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,7 +47,6 @@ public class AutoCompletePlaces {
                 autoCompleteJson = new JSONObject(autoCompleteData);
                 autoCompleteList = autoCompleteParser.parse(autoCompleteJson);
             } catch (Exception e) {
-                Log.d("Google Place Read Task", e.toString());
             }
             return null;
         }

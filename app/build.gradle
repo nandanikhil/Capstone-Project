@@ -12,7 +12,7 @@ android {
         config {
             keyAlias 'reached'
             keyPassword '1007nanda'
-            storeFile file('/Users/nikhil/Documents/Reached/reached.jks')
+            storeFile file('keystores/reached.jks')
             storePassword '1007nanda'
         }
     }
@@ -43,6 +43,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     packagingOptions {

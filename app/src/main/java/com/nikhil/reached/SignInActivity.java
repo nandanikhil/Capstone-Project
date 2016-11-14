@@ -104,7 +104,6 @@ public class SignInActivity extends AppCompatActivity implements
                 firebaseAuthWithGoogle(account);
             } else {
                 // Google Sign In failed
-                Log.e(TAG, "Google Sign In failed.");
             }
         }
     }
@@ -117,14 +116,12 @@ public class SignInActivity extends AppCompatActivity implements
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
 
                         // If sign in fails, display a message to the myUser. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in myUser can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(SignInActivity.this, "Authentication failed.",
+                            Toast.makeText(SignInActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             startActivity(new Intent(SignInActivity.this, MobileNumberVerificationActivity.class));
@@ -145,6 +142,6 @@ public class SignInActivity extends AppCompatActivity implements
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
-        Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.play_service_error, Toast.LENGTH_SHORT).show();
     }
 }

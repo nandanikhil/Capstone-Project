@@ -23,7 +23,6 @@ public class ReachedWidgetProvider extends AppWidgetProvider {
         for (int i = 0; i < N; i++) {
             int appWidgetId = appWidgetIds[i];
 
-            // Create an Intent to launch ExampleActivity
             Intent intent = new Intent(context, StatusActivity.class);
             intent.putExtra(Utility.IS_FROM_NOTIFICATIONS, false);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

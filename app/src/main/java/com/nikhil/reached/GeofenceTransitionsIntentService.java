@@ -65,7 +65,7 @@ public class GeofenceTransitionsIntentService extends IntentService {
             String firebaseregid = Utility.getSharedPrefrences(getApplicationContext()).getString(Utility.RECIEVERS_FIREBASEREGID, "");
 
             if (!firebaseregid.isEmpty() && !transit_details.isEmpty() && transit_details.contains("##")) {
-                new SendNotification(firebaseregid, transit_details.split("##")[0], JOURNEY_COMPLETED, transit_details.split("##")[1]).makeApiCall();
+                new SendNotification(firebaseregid, transit_details.split("##")[0], JOURNEY_COMPLETED, transit_details.split("##")[1],getBaseContext()).makeApiCall();
             }
             // Send notification and log the transition details.
             Log.i(TAG, geofenceTransitionDetails);

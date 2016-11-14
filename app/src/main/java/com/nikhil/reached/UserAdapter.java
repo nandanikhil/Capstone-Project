@@ -2,7 +2,6 @@ package com.nikhil.reached;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import com.nikhil.reached.utils.SendNotification;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by nikhil on 07/11/16.
@@ -46,7 +43,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildAdded:" + dataSnapshot.getKey());
 
                 // A new myUser has been added, add it to the displayed list
                 User user = dataSnapshot.getValue(User.class);
@@ -61,7 +57,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildChanged:" + dataSnapshot.getKey());
 
                 // A myUser has changed, use the key to determine if we are displaying this
                 // myUser and if so displayed the changed myUser.
@@ -76,15 +71,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
                     // Update the RecyclerView
                     notifyItemChanged(userIndex);
-                } else {
-                    Log.w(TAG, "onChildChanged:unknown_child:" + userKey);
                 }
 
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Log.d(TAG, "onChildRemoved:" + dataSnapshot.getKey());
 
                 // A myUser has changed, use the key to determine if we are displaying this
                 // myUser and if so remove it.
@@ -100,14 +92,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                     // Update the RecyclerView
                     notifyItemRemoved(userIndex);
                 } else {
-                    Log.w(TAG, "onChildRemoved:unknown_child:" + userKey);
                 }
                 // [END_EXCLUDE]
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
 
                 // A myUser has changed position, use the key to determine if we are
                 // displaying this myUser and if so move it.
@@ -119,8 +109,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.w(TAG, "postUsers:onCancelled", databaseError.toException());
-                Toast.makeText(mActivity, "Failed to load users.",
+                Toast.makeText(mActivity, R.string.failed_to_load_users,
                         Toast.LENGTH_SHORT).show();
             }
         };
@@ -176,7 +165,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 @Override
                 public void onClick(View view) {
                     User user = (User) view.getTag();
-                    new SendNotification(user.getFirebaseRegid(), user.getUserName(), JOURNEY_STARTED, selectedLocation).execute();
+                    new SendNotification(user.getFirebaseRegid(), user.getUserName(), JOURNEY_STARTED, selectedLocation, mActivity).execute();
 
 
                 }

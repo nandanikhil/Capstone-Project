@@ -1,6 +1,9 @@
 package com.nikhil.reached.utils;
 
+import android.content.Context;
 import android.os.AsyncTask;
+
+import com.nikhil.reached.R;
 
 import org.json.JSONObject;
 
@@ -21,15 +24,15 @@ public class SendNotification extends AsyncTask<Void, Void, Void> {
 
     private JSONObject object;
 
-    public SendNotification(String firebaseRegid, String name, int type, String location) {
+    public SendNotification(String firebaseRegid, String name, int type, String location, Context activity) {
         try {
             object = new JSONObject();
             object.put("regID", firebaseRegid);
-            object.put("message", name + "##" + location);
+            object.put("message", name + activity.getResources().getString(R.string.seperator) + location);
             object.put("data", String.valueOf(type));
 
             Utility.getSharedPrefrences(getApplicationContext()).edit().putString(Utility.RECIEVERS_FIREBASEREGID, firebaseRegid).commit();
-            Utility.getSharedPrefrences(getApplicationContext()).edit().putString(Utility.TRANSIT_DETAILS, name + "##" + location).commit();
+            Utility.getSharedPrefrences(getApplicationContext()).edit().putString(Utility.TRANSIT_DETAILS, name + activity.getResources().getString(R.string.seperator) + location).commit();
 
         } catch (Exception e) {
             e.printStackTrace();

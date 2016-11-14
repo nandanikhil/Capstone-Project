@@ -22,14 +22,14 @@ public class StatusActivity extends AppCompatActivity {
         }
         String transit_details = Utility.getSharedPrefrences(getApplicationContext()).getString(Utility.TRANSIT_DETAILS, "");
         if (isFromNotifications) {
-            if (!transit_details.isEmpty() && transit_details.contains("##"))
-                status.setText(transit_details.split("##")[0] + getResources().getString(R.string.has_reached) + transit_details.split("##")[1]);
+            if (!transit_details.isEmpty() && transit_details.contains(getResources().getString(R.string.seperator)))
+                status.setText(transit_details.split(getResources().getString(R.string.seperator))[0] + getResources().getString(R.string.has_reached) + transit_details.split(getResources().getString(R.string.seperator))[1]);
         } else {
             if (!transit_details.isEmpty()) {
-                if (transit_details.contains("##"))
-                    status.setText(transit_details.split("##")[0] + getResources().getString(R.string.on_way) + transit_details.split("##")[1]);
+                if (transit_details.contains(getResources().getString(R.string.seperator)))
+                    status.setText(transit_details.split(getResources().getString(R.string.seperator))[0] + getResources().getString(R.string.on_way) + transit_details.split(getResources().getString(R.string.seperator))[1]);
             } else {
-                status.setText("No one is traveling in your connections");
+                status.setText(getResources().getString(R.string.no_one_is_travelling));
             }
         }
 
